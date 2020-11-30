@@ -10,10 +10,18 @@ To use it, you just need to clone this repository, open a terminal and run the f
 ``` bash
 $ yarn install
 ```
+or if you use npm:
+``` bash
+$ npm install
+```
 to install all the needed packages and then run:
 
 ``` bash
-yarn start
+$ yarn start
+```
+or
+``` bash
+$ npm start
 ```
 
 once the server is running, you can make calls to the following routes:
@@ -36,3 +44,5 @@ once the server is running, you can make calls to the following routes:
 ## Informations
 The server will run on port 3000.
 
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
