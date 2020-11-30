@@ -5,5 +5,5 @@ const { server } = new App();
 
 server.listen(
   PORT,
-  process.stdout.write(`Server running on port: ${PORT} \n`)
-)
+  process.stdout.write(`Server running on port: ${PORT} \n`),
+);

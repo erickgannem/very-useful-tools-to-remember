@@ -9,6 +9,6 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'import/extensions': ['always'],
+    'import/extensions': [0],
   },
 };
