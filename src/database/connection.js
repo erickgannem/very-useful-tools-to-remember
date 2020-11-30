@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import Tool from './models/Tool.js';
+import User from './models/User.js';
 
 dotenv.config({});
 
@@ -14,6 +15,6 @@ mongoose.connect(
   },
 );
 
-const db = { Tool };
+const db = { Tool, User };
 
 export default db;
