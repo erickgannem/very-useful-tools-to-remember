@@ -19,8 +19,8 @@ const userSchema = new Schema({
 
 });
 
-userSchema.static('comparePasswords', async function compareHandler(plainPassword) {
-  const areEqual = await bcrypt.compare(plainPassword, this.password);
+userSchema.static('comparePasswords', async (plainPassword, hashedPassword) => {
+  const areEqual = await bcrypt.compare(plainPassword, hashedPassword);
   return areEqual;
 });
 

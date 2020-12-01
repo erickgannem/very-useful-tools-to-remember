@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { readFile, realpathSync } from 'fs';
+import { readFile } from 'fs';
 import { promisify } from 'util';
 import { join, dirname, resolve } from 'path';
 
@@ -16,7 +16,7 @@ const privateKey = async () => {
 const signToken = async (payload) => {
   const key = await privateKey();
   try {
-    const token = jwt.sign(payload, key);
+    const token = jwt.sign(JSON.stringify(payload), key);
 
     return token;
   } catch (err) {
