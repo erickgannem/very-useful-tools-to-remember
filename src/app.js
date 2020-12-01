@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 
 import routes from './routes.js';
-import errorHandler from './handlers/errorHandler.js';
+import errorMiddleware from './handlers/errorMiddleware.js';
 
 export default class App {
   constructor() {
@@ -18,6 +18,6 @@ export default class App {
 
   routes() {
     this.server.use(routes);
-    this.server.use(errorHandler);
+    this.server.use(errorMiddleware);
   }
 }
