@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 
 import routes from './routes.js';
-import errorMiddleware from './handlers/errorMiddleware.js';
+import errorMiddleware from './middlewares/errorMiddleware.js';
 
 export default class App {
   constructor() {

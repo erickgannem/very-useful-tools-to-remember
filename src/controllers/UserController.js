@@ -20,9 +20,9 @@ class UserController {
     const { body } = req;
     try {
       const user = await db.User.findOne({ username: body.username });
-      const { _id, username, email } = user;
-
       if (!user) throw new Error('User not found');
+
+      const { _id, username, email } = user;
 
       const passwordsMatch = await db.User.comparePasswords(body.password, user.password);
 
