@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { decodeToken } from '../handlers/tokenHandler.js';
+import db from '../database/connection.js';
 
 const { JsonWebTokenError } = jwt;
 
@@ -15,8 +16,14 @@ const authMiddleware = async (req, res, next) => {
     const data = await decodeToken(token);
 
     if (data instanceof JsonWebTokenError) throw new Error('There was a problem with the provided token');
+
+    const { _id: id } = data;
+    const user = await db.User.findById(id);
+
+    if (!user) throw new Error('You\'re not authorized');
+    return next();
   } catch (err) {
-    next(err);
+    return next(err);
   }
 };
 
