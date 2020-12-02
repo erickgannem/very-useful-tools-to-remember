@@ -1,4 +1,9 @@
-const authMiddleware = (req, res, next) => {
+import jwt from 'jsonwebtoken';
+import { decodeToken } from '../handlers/tokenHandler.js';
+
+const { JsonWebTokenError } = jwt;
+
+const authMiddleware = async (req, res, next) => {
   try {
     if (!req.headers.authorization) throw new Error('You\'re not authorized');
 
@@ -7,9 +12,11 @@ const authMiddleware = (req, res, next) => {
     if (token === 'undefined' || token === undefined) throw new Error('Please provide a token');
     if (type !== 'Bearer') throw new Error('Wrong authentication type');
 
-    next();
+    const data = await decodeToken(token);
+
+    if (data instanceof JsonWebTokenError) throw new Error('There was a problem with the provided token');
   } catch (err) {
-    return next(err);
+    next(err);
   }
 };
 

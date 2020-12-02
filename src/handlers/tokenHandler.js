@@ -27,7 +27,7 @@ const signToken = async (payload) => {
 const decodeToken = async (token) => {
   const key = await privateKey();
   try {
-    const decoded = await jwt.verify(token, key);
+    const decoded = jwt.verify(token, key);
     return decoded;
   } catch (err) {
     return err;
