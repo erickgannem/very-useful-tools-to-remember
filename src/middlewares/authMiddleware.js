@@ -1,12 +1,16 @@
 const authMiddleware = (req, res, next) => {
-  if (!req.headers.authorization) throw new Error('You\'re not authorized');
+  try {
+    if (!req.headers.authorization) throw new Error('You\'re not authorized');
 
-  const [type, token] = req.headers.authorization.split(' ');
+    const [type, token] = req.headers.authorization.split(' ');
 
-  if (type !== 'Bearer') throw new Error('Wrong authentication type');
-  if (token === 'undefined') throw new Error('Please provide a token');
+    if (token === 'undefined' || token === undefined) throw new Error('Please provide a token');
+    if (type !== 'Bearer') throw new Error('Wrong authentication type');
 
-  next();
+    next();
+  } catch (err) {
+    return next(err);
+  }
 };
 
 export default authMiddleware;

@@ -6,7 +6,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon ./src/server.js"
+    "dev": "NODE_ENV=development nodemon ./src/server.js",
+    "debug": "NODE_ENV=debug nodemon --inspect ./src/server.js"
   },
   "devDependencies": {
     "eslint": "^7.14.0",
